@@ -19,11 +19,11 @@ jobs:
         run: git clone https://github.com/spack/spack.git
       - name: Install patchelf
         run: |
-          . spack/share/spack/setup-env.sh
+          source spack/share/spack/setup-env.sh
           spack install patchelf
 
      - name: Install intel classic compilers
         run: |
-          . spack/share/spack/setup-env.sh
+          source spack/share/spack/setup-env.sh
           spack install intel-oneapi-compilers-classic
         
