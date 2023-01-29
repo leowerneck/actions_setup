@@ -1,0 +1,23 @@
+name: MacOS-intel
+
+on:
+  push:
+    branches: main
+  pull_request:
+
+jobs:
+  install-intel-compilers:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-11, macos-12]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Clone spack repository
+        run: git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+      - name: Install intel classic compilers
+        run: ./spack/bin/spack install intel-oneapi-compilers-classic
+      - name: Test compiler
+        run: icc --version
