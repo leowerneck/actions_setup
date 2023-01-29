@@ -20,4 +20,4 @@ jobs:
       - name: List all conda packages
         run: conda list
       - name: List package directory
-        run: pwd; ls opt/anaconda3/pkgs
+        run: ls /Users/runner/opt/anaconda3/pkgs
