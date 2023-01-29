@@ -21,6 +21,7 @@ jobs:
           hdiutil attach m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
           sudo /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline/bootstrapper.app/Contents/MacOS/bootstrapper --action install -c --eula accept
           hdiutil unmount /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline
-      - name: Test
-        run: icc --version
-        
+      - name: Compile basic C program
+        run: icc -O2 -march=native -fopenmp -Wall -std=c99 -diag-disable=10441 basic_program.c -o basic_program
+      - name: Run basic C program
+        run: ./basic_program
