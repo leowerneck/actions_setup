@@ -15,5 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Test compilers
-        run: conda --version
+      - name: Try installing intel compilers
+        run: conda install dpcpp-cpp-rt
+      - name: Test compiler
+        run: icx --version
