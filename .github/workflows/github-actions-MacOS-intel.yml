@@ -15,10 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Get spack
-        run: git clone https://github.com/spack/spack.git
       - name: Try to install intel C/C++ compiler
         run: |
           curl -O https://registrationcenter-download.intel.com/akdlm/irc_nas/19123/l_dpcpp-cpp-compiler_p_2023.0.0.25393_offline.sh
-          source l_dpcpp-cpp-compiler_p_2023.0.0.25393_offline.sh
+          chmod 755 l_dpcpp-cpp-compiler_p_2023.0.0.25393_offline.sh
+          ./l_dpcpp-cpp-compiler_p_2023.0.0.25393_offline.sh
         
