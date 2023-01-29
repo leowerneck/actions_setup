@@ -21,8 +21,7 @@ jobs:
         run: |
           source spack/share/spack/setup-env.sh
           spack install patchelf
-
-     - name: Install intel classic compilers
+      - name: Install intel classic compilers
         run: |
           source spack/share/spack/setup-env.sh
           spack install intel-oneapi-compilers-classic
