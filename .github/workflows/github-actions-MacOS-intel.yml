@@ -18,4 +18,4 @@ jobs:
       - name: Get spack
         run: git clone --depth 1 https://github.com/spack/spack.git
       - name: Install intel compilers
-        run: ./spack/bin/spack install --no-cache intel-oneapi-compilers
+        run: ./spack/bin/spack install --no-cache intel-oneapi-compilers@2022.0.2
