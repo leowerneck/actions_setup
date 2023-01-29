@@ -17,7 +17,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Get spack
         run: git clone --depth 1 https://github.com/spack/spack.git
-      - name: Install gcc12
-        run: ./spack/bin/spack install gcc@12
       - name: Install intel compilers
-        run: ./spack/bin/spack install intel-oneapi-compilers-classic %gcc@12
+        run: ./spack/bin/spack install --no-cache intel-oneapi-compilers
