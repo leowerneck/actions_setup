@@ -16,6 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Get spack
-        run: git clone --depth 1 https://github.com/spack/spack.git
-      - name: Install intel compilers
-        run: ./spack/bin/spack install --no-cache intel-oneapi-compilers@2022.0.2
+        run: git clone https://github.com/spack/spack.git
+      - name: Install patchelf
+        run: |
+        . spack/share/spack/setup-env.sh
+        spack install patchelf
+
+     - name: Install intel classic compilers
+        run: |
+        . spack/share/spack/setup-env.sh
+        spack install intel-oneapi-compilers-classic
+        
