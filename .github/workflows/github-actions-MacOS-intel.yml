@@ -15,11 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Try installing intel compilers
-        run: |
-          pip install -U pip
-          pip install dpcpp-cpp-rt
-      - name: List package directory
-        run: |
-          icx --version
-          icc --version
+      - name: Get spack
+        run: git clone --depth 1 https://github.com/spack/spack.git
+      - name: Install gcc12
+        run: ./spack/bin/spack install gcc@12
+      - name: Install intel compilers
+        run: ./spack/bin/spack install intel-oneapi-compilers-classic %gcc@12
