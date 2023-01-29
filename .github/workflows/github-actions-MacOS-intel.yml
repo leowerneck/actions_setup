@@ -17,13 +17,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Try to install intel C/C++ compiler
         run: |
-          export workdir=`pwd`
           curl -O https://registrationcenter-download.intel.com/akdlm/irc_nas/19097/m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
           hdiutil attach m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
-          cd /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline/bootstrapper.app/Contents/MacOS
-          sudo ./bootstrapper --action install -c --eula accept
-          cd $workdir
+          sudo /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline/bootstrapper.app/Contents/MacOS/bootstrapper --action install -c --eula accept
           hdiutil unmount /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline
       - name: Test
-        run: pwd; icc --version
+        run: icc --version
         
