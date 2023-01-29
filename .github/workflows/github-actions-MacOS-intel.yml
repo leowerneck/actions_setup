@@ -19,3 +19,5 @@ jobs:
         run: conda install dpcpp-cpp-rt
       - name: List all conda packages
         run: conda list
+      - name: List package directory
+        run: pwd; ls opt/anaconda3/pkgs
