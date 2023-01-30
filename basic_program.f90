@@ -5,6 +5,8 @@ program main
   real*8 sum, exact
   real*8, allocatable :: x(:)
 
+  write(*, '(A)') "Beginning Fortran basic program..."
+
   n=100
   allocate(x(n))
 

@@ -4,6 +4,8 @@
 
 int main() {
 
+  printf("Beginning C basic program...\n");
+
   int n = 1000;
   double *x = (double *)malloc(sizeof(double)*n);
 

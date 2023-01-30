@@ -2,6 +2,8 @@
 
 int main() {
 
+  std::cout << "Beginning C++ basic program...\n";
+
   int n = 1000;
   double *x = new double[n];
 
