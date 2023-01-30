@@ -13,10 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-
-    - name: Install gcc-12 using homebrew
-      run: brew install gcc@12
+    - name: Install gcc using chocolatey
+      run: choco install gcc
     - name: Now test the compiler
-      run: gcc-12 --version
+      run: gcc --version
