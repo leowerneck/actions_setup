@@ -1,4 +1,4 @@
-name: Windows-gcc
+name: Windows-gnu
 
 on:
   push:
@@ -6,18 +6,26 @@ on:
   pull_request:
 
 jobs:
-  install-and-test-gcc:
+  install-and-test-gnu-compilers:
     strategy:
       fail-fast: false
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Install gcc using chocolatey
       run: choco upgrade mingw
-    - name: Test C compiler
-      run: gcc --version
-    - name: Test C++ compiler
-      run: g++ --version
-    - name: Test Fortran compiler
-      run: gfortran --version
+    - name: Compile and run a simple C code
+      run: |
+        gcc -O2 -march=native -fopenmp -Wall basic_program.c -o basic_program_c.exe
+        .\basic_program_c.exe
+
+    - name: Compile and run a simple C++ code
+      run: |
+        g++ -O2 -march=native -fopenmp -Wall basic_program.cc -o basic_program_cpp.exe
+        .\basic_program_cpp.exe
+        
+    - name: Compile and run a simple Fortran code
+      run: |
+        gfortran -O2 -march=native -fopenmp -Wall basic_program.f90 -o basic_program_fortran.exe
+        .\basic_program_fortran.exe
