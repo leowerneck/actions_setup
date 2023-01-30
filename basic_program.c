@@ -24,6 +24,8 @@ int main() {
   }
 
   free(x);
+
+  printf("Finished test with no errors\n");
   
   return 0;
 }

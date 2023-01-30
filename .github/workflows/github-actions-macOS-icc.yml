@@ -1,4 +1,4 @@
-name: MacOS-intel
+name: macOS-icc
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  install-intel-compilers:
+  install-and-test-icc:
     strategy:
       fail-fast: false
       matrix:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Try to install intel C/C++ compiler
+      - name: Install intel C/C++ compiler
         run: |
           curl -O https://registrationcenter-download.intel.com/akdlm/irc_nas/19097/m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
           hdiutil attach m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
