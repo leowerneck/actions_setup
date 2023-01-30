@@ -22,7 +22,7 @@ jobs:
           rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
           sudo echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
           sudo apt update
-          sudo apt install intel-oneapi-compiler-fortran-classic
+          sudo apt install intel-oneapi-compiler-fortran
       - name: Compile basic Fortran program
         run: |
           source /opt/intel/oneapi/setvars.sh && printenv >> $GITHUB_ENV
