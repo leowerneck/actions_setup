@@ -1,4 +1,4 @@
-name: Windows-gnu
+name: Windows-gcc
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  install-and-test-gnu-compilers:
+  test-gcc:
     strategy:
       fail-fast: false
     runs-on: windows-latest
@@ -14,20 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Compile a simple C program
-      run: gcc -O2 -march=native -fopenmp -Wall basic_program.c -o basic_program_c.exe
+      run: gcc -O2 -march=native -fopenmp -Wall basic_program.c -o basic_program.exe
 
     - name: Run a simple C program
-      run: .\basic_program_c.exe
-
-    - name: Compile a simple C++ program
-      run: g++ -O2 -march=native -fopenmp -Wall basic_program.cc -o basic_program_cpp.exe
-
-    - name: Run a simple C++ program
-      run: .\basic_program_cpp.exe
-        
-    - name: Compile a simple Fortran program
-      run: gfortran -O2 -march=native -fopenmp -Wall simple.f90 -o simple.exe
-
-    - name: Run a simple Fortran program
-      run: .\simple.exe
+      run: .\basic_program.exe
 

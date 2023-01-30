@@ -1,0 +1,22 @@
+name: Windows-g++
+
+on:
+  push:
+    branches: main
+  pull_request:
+
+jobs:
+  test-g++:
+    strategy:
+      fail-fast: false
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Compile a simple C++ program
+      run: g++ -O2 -march=native -fopenmp -Wall basic_program.cc -o basic_program.exe
+
+    - name: Run a simple C++ program
+      run: .\basic_program.exe
+        
+
