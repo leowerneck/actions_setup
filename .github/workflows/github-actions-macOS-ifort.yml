@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install intel C/C++ compiler
+      - name: Install intel Fortran compiler
         run: |
           curl -O https://registrationcenter-download.intel.com/akdlm/irc_nas/19106/m_fortran-compiler-classic_p_2023.0.0.25379_offline.dmg
           hdiutil attach m_fortran-compiler-classic_p_2023.0.0.25379_offline.dmg
@@ -24,6 +24,6 @@ jobs:
       - name: Compile basic Fortran program
         run: |
           source /opt/intel/oneapi/setvars.sh
-          ifort -O2 -march=native -fopenmp -Wall -diag-disable=10441 basic_program.f90 -o basic_program
+          ifort -O2 -march=native -fopenmp -warn all basic_program.f90 -o basic_program
       - name: Run basic Fortran program
         run: ./basic_program
