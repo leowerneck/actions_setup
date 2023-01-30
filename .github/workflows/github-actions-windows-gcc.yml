@@ -26,8 +26,8 @@ jobs:
       run: .\basic_program_cpp.exe
         
     - name: Compile a simple Fortran program
-      run: gfortran -O2 -march=native -fopenmp -Wall basic_program.f90 -o basic_program_fortran.exe
+      run: gfortran -O2 -march=native -fopenmp -Wall simple.f90 -o simple.exe
 
     - name: Run a simple Fortran program
-      run: .\basic_program_fortran.exe
+      run: .\simple.exe
 
