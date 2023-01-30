@@ -1,0 +1,27 @@
+name: macOS-icpc
+
+on:
+  push:
+    branches: main
+  pull_request:
+
+jobs:
+  install-and-test-icpc:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-11, macos-12]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install intel C/C++ compiler
+        run: |
+          curl -O https://registrationcenter-download.intel.com/akdlm/irc_nas/19097/m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
+          hdiutil attach m_cpp-compiler-classic_p_2023.0.0.25429_offline.dmg
+          sudo /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline/bootstrapper.app/Contents/MacOS/bootstrapper --action install -c --eula accept
+          hdiutil unmount /Volumes/m_cpp-compiler-classic_p_2023.0.0.25429_offline
+      - name: Compile basic C program
+        run: icpc -O2 -march=native -fopenmp -Wall -diag-disable=10441 basic_program.cc -o basic_program
+      - name: Run basic C program
+        run: ./basic_program
