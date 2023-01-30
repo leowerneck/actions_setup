@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  test-g++:
+  test-gplusplus:
     strategy:
       fail-fast: false
     runs-on: windows-latest
