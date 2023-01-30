@@ -22,6 +22,8 @@ jobs:
           sudo /Volumes/m_fortran-compiler-classic_p_2023.0.0.25379_offline/bootstrapper.app/Contents/MacOS/bootstrapper --action install -c --eula accept
           hdiutil unmount /Volumes/m_fortran-compiler-classic_p_2023.0.0.25379_offline
       - name: Compile basic Fortran program
-        run: ifort -O2 -march=native -fopenmp -Wall -diag-disable=10441 basic_program.f90 -o basic_program
+        run: |
+          source /opt/intel/oneapi/setvars.sh
+          ifort -O2 -march=native -fopenmp -Wall -diag-disable=10441 basic_program.f90 -o basic_program
       - name: Run basic Fortran program
         run: ./basic_program
