@@ -15,5 +15,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install gcc using chocolatey
       run: choco install mingw
-    - name: Now test the compiler
+    - name: Test C compiler
       run: gcc --version
+    - name: Test C++ compiler
+      run: g++ --version
+    - name: Test Fortran compiler
+      run: gfortran --version
