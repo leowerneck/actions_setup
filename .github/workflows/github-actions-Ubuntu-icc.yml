@@ -21,5 +21,9 @@ jobs:
           sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
           rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
           sudo echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
-          sudo apt-get update
-          apt-cache search intel-oneapi-compiler
+          sudo apt update
+          sudo apt install intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+      - name: Compile basic C program
+        run: icc -O2 -march=native -fopenmp -Wall -std=c99 -diag-disable=10441 basic_program.c -o basic_program
+      - name: Run basic C program
+        run: ./basic_program
