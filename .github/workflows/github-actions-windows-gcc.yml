@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install gcc using chocolatey
-      run: choco install mingw
+      run: choco upgrade mingw
     - name: Test C compiler
       run: gcc --version
     - name: Test C++ compiler
