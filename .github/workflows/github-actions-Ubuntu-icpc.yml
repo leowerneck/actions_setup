@@ -1,4 +1,4 @@
-name: Ubuntu-icc
+name: Ubuntu-icpc
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  install-and-test-icc:
+  install-and-test-icpc:
     strategy:
       fail-fast: false
       matrix:
@@ -23,9 +23,9 @@ jobs:
           sudo echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
           sudo apt update
           sudo apt install intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
-      - name: Compile basic C program
+      - name: Compile basic C++ program
         run: |
           source /opt/intel/oneapi/setvars.sh && printenv >> $GITHUB_ENV
-          icc -O2 -march=native -fopenmp -Wall -std=c99 -diag-disable=10441 basic_program.c -o basic_program
-      - name: Run basic C program
+          icpc -O2 -march=native -fopenmp -Wall -diag-disable=10441 basic_program.cc -o basic_program
+      - name: Run basic C++ program
         run: ./basic_program
