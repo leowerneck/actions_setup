@@ -14,6 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - uses: actions/checkout@v3
       - uses: Jimver/cuda-toolkit@v0.2.8
       - name: Check directory
         run: echo `pwd` && ls
