@@ -15,7 +15,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Print kernel
-        run: echo `uname -r`
-      - name: Install kernel headers
-        run: sudo apt-get install linux-headers-$(uname -r)
+      - name: Install CUDA
+        run: |
+          sudo apt-get update
+          sudo apt-get install cuda
+          sudo apt-get install nvidia-gds
+
+      - name: Test nvcc
+        run: |
+          nvcc --version
+      
