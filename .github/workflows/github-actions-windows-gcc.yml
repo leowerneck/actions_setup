@@ -9,7 +9,9 @@ jobs:
   test-gcc:
     strategy:
       fail-fast: false
-    runs-on: windows-latest
+      matrix:
+        os: [windows-2022, windows-2019]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
