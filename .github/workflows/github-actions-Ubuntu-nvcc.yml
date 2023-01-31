@@ -15,6 +15,9 @@ jobs:
 
     steps:
       - uses: Jimver/cuda-toolkit@v0.2.8
+      - name: Check directory
+        run: echo `pwd` && ls
+
       - name: Compiler CUDA code
         run: nvcc -O2 -Xptxas -O2 basic_program.cu -o basic_program -lcublas
 
