@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  install-and-test-nvcc:
+  Test-nvcc:
     strategy:
       fail-fast: false
       matrix:
@@ -15,7 +15,9 @@ jobs:
 
     steps:
       - uses: Jimver/cuda-toolkit@v0.2.8
-      - name: Test nvcc
-        run: |
-          nvcc --version
+      - name: Compiler CUDA code
+        run: nvcc -O2 -Xptxas -O2 basic_program.cu -o basic_program -lcublas
+
+      - name: Run CUDA code
+        run: ./basic_program
       
