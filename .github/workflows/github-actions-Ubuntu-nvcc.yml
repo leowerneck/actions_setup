@@ -14,13 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Install CUDA
-        run: |
-          sudo apt-get update
-          sudo apt-get install cuda
-          sudo apt-get install nvidia-gds
-
+      - uses: Jimver/cuda-toolkit@v0.2.8
       - name: Test nvcc
         run: |
           nvcc --version
