@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: Jimver/cuda-toolkit@v0.2.8
-      - name: Check directory
-        run: echo `pwd` && ls
+      - name: Get GPU information
+        run: sudo lshw -C display
 
       - name: Compiler CUDA code
         run: nvcc -O2 -Xptxas -O2 basic_program.cu -o basic_program -lcublas
