@@ -15,5 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Check nvcc exists
-        run: nvcc --version
+      - name: Print kernel
+        run: echo `uname -r`
+      - name: Install kernel headers
+        run: sudo apt-get install linux-headers-$(uname -r)
